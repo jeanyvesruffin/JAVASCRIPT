@@ -1,3 +1,27 @@
+<!-- TOC -->
+
+- [JAVASCRIPT](#javascript)
+- [Utiliser les donnees et les types de donnees dans JavaScript](#utiliser-les-donnees-et-les-types-de-donnees-dans-javascript)
+    - [Declarez des variables et modifiez leurs valeurs](#declarez-des-variables-et-modifiez-leurs-valeurs)
+    - [Enregistrez vos donnees avec des types de donnees](#enregistrez-vos-donnees-avec-des-types-de-donnees)
+    - [Definissez des objets et leurs attributs avec des classes](#definissez-des-objets-et-leurs-attributs-avec-des-classes)
+    - [Creation d'une classe](#creation-dune-classe)
+    - [Gerez la complexite avec la bonne collection (array, set, map)](#gerez-la-complexite-avec-la-bonne-collection-array-set-map)
+        - [Les tableaux](#les-tableaux)
+        - [Les sets (ensembles) et maps (cartes)](#les-sets-ensembles-et-maps-cartes)
+- [Gerer la logique d'un programme en JavaScript](#gerer-la-logique-dun-programme-en-javascript)
+    - [Conditions : If, else et switch](#conditions--if-else-et-switch)
+    - [Les boucles : for, while, for ..in, for ..of,](#les-boucles--for-while-for-in-for-of)
+    - [Les exceptions](#les-exceptions)
+- [Ecrivez du code propre et facile a maintenir](#ecrivez-du-code-propre-et-facile-a-maintenir)
+    - [Les fonctions en utilisant les fat arrow (=>)](#les-fonctions-en-utilisant-les-fat-arrow-)
+    - [Methode de classe](#methode-de-classe)
+    - [Methode de classe statique](#methode-de-classe-statique)
+    - [Refactirisation de code](#refactirisation-de-code)
+
+<!-- /TOC -->
+
+
 # JAVASCRIPT
 
 Pour executer votre programme javascript dans vscode il suffit de tapper dans votre terminal
@@ -136,9 +160,9 @@ console.log('Chaque episode de  : ' + episodeTitle + ' a une duree de : ' + epis
 console.log('La saison 1 a ete vu  : ' + episodeHasBeenWatched);
 ```
 
-## Creation de classes
+## Creation d'une classe
 
-Les classes sont utiles lorsque nous souhaitons creer des objets volumineux et surtout si vous desirez les reutiliser.
+Les classes sont utiles lorsque nous souhaitons creer des objets volumineux et surtout si nous desirons les reutiliser.
 
 Structure d'une classe:
 
@@ -279,4 +303,297 @@ console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? '+ nbreDeFe
 Plus d'information sur les Sets [Sets MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Set)
 
 Plus d'information sur les Maps [Maps MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map)
+
+# Gerer la logique d'un programme en JavaScript
+
+## Conditions : If, else et switch
+
+* **if...else**
+
+```js
+function testNum(a) {
+  let result;
+  if (a > 0) {
+    result = 'positive';
+  } else {
+    result = 'NOT positive';
+  }
+  return result;
+}
+
+console.log(testNum(-5));
+```
+
+* **switch**
+
+```js
+const expr = 'Papayas';
+switch (expr) {
+  case 'Oranges':
+    console.log('Oranges are $0.59 a pound.');
+    break;
+  case 'Mangoes':
+  case 'Papayas':
+    console.log('Mangoes and papayas are $2.79 a pound.');
+    // expected output: "Mangoes and papayas are $2.79 a pound."
+    break;
+  default:
+    console.log(`Sorry, we are out of ${expr}.`);
+}
+```
+
+## Les boucles : for, while, for ..in, for ..of,
+
+* **for**
+
+```js
+let str = '';
+for (let i = 0; i < 9; i++) {
+  str = str + i;
+}
+console.log(str);
+```
+
+* **while**
+
+```js
+let n = 0;
+while (n < 3) {
+  n++;
+}
+console.log(n);
+// expected output: 3
+```
+
+* **for...in**
+
+```js
+const object = { a: 1, b: 2, c: 3 };
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}
+// expected output:
+// "a: 1"
+// "b: 2"
+// "c: 3"
+```
+
+* **for...of**
+
+```js
+const array1 = ['a', 'b', 'c'];
+for (const element of array1) {
+  console.log(element);
+}
+// expected output: "a"
+// expected output: "b"
+// expected output: "c"
+```
+
+## Les exceptions
+
+* **try...catch**
+
+```js
+try {
+  nonExistentFunction();
+} catch (error) {
+  console.error(error);
+  // expected output: ReferenceError: nonExistentFunction is not defined
+  // Note - error messages will vary depending on browser
+}
+```
+
+# Ecrivez du code propre et facile a maintenir
+
+## Les fonctions en utilisant les fat arrow (=>)
+
+```js
+const ajouter = (firstNbre, secondNbr) => {
+    return firstNbre + secondNbr;
+}
+console.log(ajouter(54, 146));
+```
+
+## Methode de classe
+
+```js
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+    showBalance() {
+        console.log("Solde: " + this.balance + " EUR");
+    }
+}
+const newAccount = new BankAccount("Will Alexander", 500);
+newAccount.showBalance();
+// retourn 200
+```
+
+## Methode de classe statique
+
+```js
+const randomNumber = Math.random(); // crée un nombre aléatoire sur l'intervalle [0, 1]
+const roundMeDown = Math.floor(495.966); // arrondit vers le bas à l'entier le plus proche, renvoie 495
+```
+
+
+```js
+class BePolite {
+    static sayHello() {
+        console.log(" !");
+    }
+    static sayHelloTo(name) {
+        console.log("Hello " + name + "!");
+    }
+    static add(firstNumber, secondNumber) {
+        return firstNumber + secondNumber;
+    }
+}
+BePolite.sayHello(); // imprime "Hello!""
+BePolite.sayHelloTo("Will"); // imprime "Hello Will!""
+const sum = BePolite.add(2, 3); // sum = 5
+```
+
+## Refactirisation de code
+
+Avant:
+```js
+class Show {
+    constructor(title, numberOfSeasons, episodesPerSeason) {
+      this.title = title;
+      this.numberOfSeasons = numberOfSeasons;
+      this.episodesPerSeason = episodesPerSeason;
+  }
+}
+
+const tau = new Show('The Story of Tau', 5, 12);
+const meldrum = new Show('The Hero of Old Meldrum', 3, 6);
+const clara = new Show('The Bugs of Isla Clara', 6, 15);
+
+const shows = [tau, meldrum, clara];
+
+// Modify the following code
+// ======================
+
+const tauTitleText = tau.title;
+const tauSeasonsText = tau.numberOfSeasons + ' seasons';
+const tauEpisodesText = tau.episodesPerSeason + ' episodes per season';
+const tauComponent = {
+  titleText: tauTitleText,
+  seasonsText: tauSeasonsText,
+  episodesText: tauEpisodesText
+};
+
+const meldrumTitleText = meldrum.title;
+const meldrumSeasonsText = meldrum.numberOfSeasons + ' seasons';
+const meldrumEpisodesText = meldrum.episodesPerSeason + ' episodes per season';
+const meldrumComponent = {
+  titleText: meldrumTitleText,
+  seasonsText: meldrumSeasonsText,
+  episodesText: meldrumEpisodesText
+};
+
+const claraTitleText = clara.title;
+const claraSeasonsText = clara.numberOfSeasons + ' seasons';
+const claraEpisodesText = clara.episodesPerSeason + ' episodes per season';
+const claraComponent = {
+  titleText: claraTitleText,
+  seasonsText: claraSeasonsText,
+  episodesText: claraEpisodesText
+};
+
+const showComponents = [tauComponent, meldrumComponent, claraComponent];
+
+// ======================
+// Modify the code above
+
+const body = document.querySelector('body');
+
+const updateShows = () => {
+  for (let show of showComponents) {
+    const showPane = document.createElement('div');
+    showPane.classList.add('series-frame');
+    const showHeading = document.createElement('h2');
+    showHeading.innerText = show.titleText;
+    const showDetails = document.createElement('p');
+    const seasons = document.createElement('p');
+    seasons.innerText = show.seasonsText;
+    const episodes = document.createElement('p');
+    episodes.innerText = show.episodesText;
+    showDetails.append(seasons);
+    showDetails.append(episodes);
+    showPane.append(showHeading);
+    showPane.append(showDetails);
+    body.append(showPane);
+  }
+};
+
+updateShows();
+```
+Apres:
+```js
+class Show {
+    constructor(title, numberOfSeasons, episodesPerSeason) {
+      this.title = title;
+      this.numberOfSeasons = numberOfSeasons;
+      this.episodesPerSeason = episodesPerSeason;
+  }
+}
+
+const tau = new Show('The Story of Tau', 5, 12);
+const meldrum = new Show('The Hero of Old Meldrum', 3, 6);
+const clara = new Show('The Bugs of Isla Clara', 6, 15);
+
+const shows = [tau, meldrum, clara];
+
+// Code modifie
+// ======================
+
+const generateComponent = (show) => {
+  const titleText = show.title;
+  const seasonsText = show.numberOfSeasons + ' seasons';
+  const episodesText = show.episodesPerSeason + ' episodes per season';
+  return {
+    titleText,
+    seasonsText,
+    episodesText
+  };
+}
+
+const tauComponent = generateComponent(tau);
+const meldrumComponent = generateComponent(meldrum);
+const claraComponent = generateComponent(clara);
+
+
+const showComponents = [tauComponent, meldrumComponent, claraComponent];
+
+// ======================
+// Code modifie
+
+const body = document.querySelector('body');
+
+const updateShows = () => {
+  for (let show of showComponents) {
+    const showPane = document.createElement('div');
+    showPane.classList.add('series-frame');
+    const showHeading = document.createElement('h2');
+    showHeading.innerText = show.titleText;
+    const showDetails = document.createElement('p');
+    const seasons = document.createElement('p');
+    seasons.innerText = show.seasonsText;
+    const episodes = document.createElement('p');
+    episodes.innerText = show.episodesText;
+    showDetails.append(seasons);
+    showDetails.append(episodes);
+    showPane.append(showHeading);
+    showPane.append(showDetails);
+    body.append(showPane);
+  }
+};
+
+updateShows();
+```
 

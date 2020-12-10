@@ -121,48 +121,200 @@ console.log('Objet Episode 3 : ' + afficherProps(thirdEpisode));
 
 console.log(`=============================== TP 4 : Les tableaux ================================`);
 
-let myTableau=[firstEpisode,secondEpisode,thirdEpisode];
-console.log('Valeur a l\'index 1 du tableau : '+ afficherProps(myTableau[1]));
-console.log('Nombre d\'element dans le tableau ? : '+ myTableau.length);
+let myTableau = [firstEpisode, secondEpisode, thirdEpisode];
+console.log('Valeur a l\'index 1 du tableau : ' + afficherProps(myTableau[1]));
+console.log('Nombre d\'element dans le tableau ? : ' + myTableau.length);
 myTableau.push(2);
-console.log('Nombre d\'element dans le tableau ? : '+ myTableau.length);
+console.log('Nombre d\'element dans le tableau ? : ' + myTableau.length);
 
 myTableau.unshift(new Episode('Terminator', 157, true));
-console.log('Nombre d\'element dans le tableau ? : '+ myTableau.length);
-console.log('Valeur a l\'index 0 du tableau : '+ afficherProps(myTableau[0]));
+console.log('Nombre d\'element dans le tableau ? : ' + myTableau.length);
+console.log('Valeur a l\'index 0 du tableau : ' + afficherProps(myTableau[0]));
 
-console.log('Nombre d\'element dans le tableau avant pop() ? : '+ myTableau.length);
+console.log('Nombre d\'element dans le tableau avant pop() ? : ' + myTableau.length);
 myTableau.pop();
-console.log('Nombre d\'element dans le tableau  apres pop ? : '+ myTableau.length);
-console.log('Valeur au derniere index du tableau : '+ afficherProps(myTableau[myTableau.length -1]));
+console.log('Nombre d\'element dans le tableau  apres pop ? : ' + myTableau.length);
+console.log('Valeur au derniere index du tableau : ' + afficherProps(myTableau[myTableau.length - 1]));
 
 console.log(`=============================== TP 5 : Les collections Sets et Maps ================================`);
 
 const nbreDeFeuTricolors = new Set(['vert', 'orange', 'rouge']);
-console.log('Le set nbreDeFeuTricolors contient-il la couleur vert ? '+ nbreDeFeuTricolors.has('vert'));
-console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? '+ nbreDeFeuTricolors.has('bleu'));
-console.log('Le set nbreDeFeuTricolors contient-il la couleur rouge ? '+ nbreDeFeuTricolors.has('rouge'));
-console.log('Nombre d\'element dans le set nbreDeFeuTricolors ? : '+ nbreDeFeuTricolors.size);
+console.log('Le set nbreDeFeuTricolors contient-il la couleur vert ? ' + nbreDeFeuTricolors.has('vert'));
+console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? ' + nbreDeFeuTricolors.has('bleu'));
+console.log('Le set nbreDeFeuTricolors contient-il la couleur rouge ? ' + nbreDeFeuTricolors.has('rouge'));
+console.log('Nombre d\'element dans le set nbreDeFeuTricolors ? : ' + nbreDeFeuTricolors.size);
 
 nbreDeFeuTricolors.add('bleu');
-console.log('Nombre d\'element dans le set nbreDeFeuTricolors apres ajout? '+ nbreDeFeuTricolors.size);
-console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? '+ nbreDeFeuTricolors.has('bleu'));
+console.log('Nombre d\'element dans le set nbreDeFeuTricolors apres ajout? ' + nbreDeFeuTricolors.size);
+console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? ' + nbreDeFeuTricolors.has('bleu'));
 
 nbreDeFeuTricolors.clear();
-console.log('Nombre d\'element dans le set nbreDeFeuTricolors apres ajout? '+ nbreDeFeuTricolors.size);
+console.log('Nombre d\'element dans le set nbreDeFeuTricolors apres ajout? ' + nbreDeFeuTricolors.size);
 
 nbreDeFeuTricolors.add('vert');
 nbreDeFeuTricolors.add('orange');
 nbreDeFeuTricolors.add('rouge');
 nbreDeFeuTricolors.add('bleu');
-console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? '+ nbreDeFeuTricolors.has('bleu'));
+console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? ' + nbreDeFeuTricolors.has('bleu'));
 nbreDeFeuTricolors.delete('bleu');
-console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? '+ nbreDeFeuTricolors.has('bleu'));
+console.log('Le set nbreDeFeuTricolors contient-il la couleur bleu ? ' + nbreDeFeuTricolors.has('bleu'));
 
-
+console.log(`=============================== TP 6 : Les conditions if... else , while et boucles ================================`);
 let numberOfCats = 10;
 
 numberOfCats += 5;
 numberOfCats /= 3;
 numberOfCats++;
 console.log(numberOfCats);
+
+let online = true;
+let message = "";
+
+if (online) {
+    message = "Utilisateur en ligne !";
+} else {
+    message = "Utilisateur hors ligne !";
+}
+console.log(message);
+
+let passengersBoarded = 0;
+
+if (passengersBoarded <= 10) {
+    passengersBoarded += 10;
+} else {
+    passengersBoarded -= (passengersBoarded - 10);
+}
+console.log(passengersBoarded);
+
+const user = {
+    name: "Will Alexander",
+    nationality: "Scottish",
+    accountLevel: "premium"
+};
+
+let welcomeMessage = "";
+
+switch (user.accountLevel) {
+    case "Will Alexander":
+        welcomeMessage = "Hi Will!";
+        break;
+    case "Scottish":
+        welcomeMessage = "Och aye the noo!";
+        break;
+    case "normal":
+        welcomeMessage = "Welcome back!";
+        break;
+    case "premium":
+        welcomeMessage = "Welcome power user!";
+        break;
+    default:
+        welcomeMessage = "Hello there!";
+}
+
+console.log(welcomeMessage);
+
+
+let vipStatus = "";
+
+let guest = {
+    name: "Sarah Kate",
+    age: 21,
+    ticket: true,
+    guestType: "artist"
+};
+
+switch (guest.guestType) {
+    case "artist":
+        vipStatus = "Normal";
+    case "star":
+        vipStatus = "Important";
+        break;
+    case "presidential":
+        vipStatus = "Mega-important";
+        break;
+    default:
+        vipStatus = "None";
+}
+
+console.log(vipStatus);
+for (let i = 0; i < 5; i++) {
+    console.log('Oh hey!');
+};
+
+const passengers = [
+    "Will Alexander",
+    "Sarah Kate",
+    "Audrey Simon",
+    "Tao Perkington"
+];
+
+passengersBoarded = 10;
+
+for (let i in passengers) {
+    passengersBoarded++;
+}
+
+console.log(passengersBoarded);
+
+
+
+const guests = [
+    {
+        name: "Will Alexander",
+        vip: false
+    },
+    {
+        name: "Sarah Kate",
+        vip: true
+    },
+    {
+        name: "Audrey Simon",
+        vip: true
+    },
+    {
+        name: "Tao Perkington",
+        vip: false
+    }
+];
+
+let vips = 0;
+let normies = 0;
+
+for (let guest of guests) {
+    if (guest.vip) {
+        vips++;
+    }
+}
+
+console.log(vips);
+
+let guestsSeated = 5;
+
+let seatsRemaining = 10;
+let guestsRemaining = 7;
+
+while (seatsRemaining > 0 && guestsRemaining > 0) {
+    guestsSeated++;
+    seatsRemaining--;
+    guestsRemaining--;
+}
+console.log(guestsSeated);
+
+console.log(`=============================== TP 7 : Les fonctions ================================`);
+
+const ajouter = (firstNbre, secondNbr) => {
+    return firstNbre + secondNbr;
+}
+console.log(ajouter(54, 146));
+
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+    showBalance() {
+        console.log("Solde: " + this.balance + " EUR");
+    }
+}
+const newAccount = new BankAccount("Will Alexander", 500);
+newAccount.showBalance();
