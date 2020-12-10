@@ -1,5 +1,11 @@
 # JAVASCRIPT
 
+Pour executer votre programme javascript dans vscode il suffit de tapper dans votre terminal
+
+```cmd
+cd [projet]
+./projet>node [projet].js
+```
 
 # Utiliser les donnees et les types de donnees dans JavaScript
 
@@ -76,3 +82,44 @@ function testVar(){
 }
 ```
 
+## Enregistrez vos donnees avec des types de donnees
+
+La methode typeof permet de retourner le type de la valeur de la variable.
+
+Les types primitifs des variables en javascript sont:
+
+* number
+* string
+* boolean
+
+Exemple: nombre
+
+```js
+let positiveNumber = 5;
+console.log('Entier positif est de type : ' + typeof positiveNumber);
+let negativeNumber = -5;
+console.log('Entier négatif est de type : ' + typeof positiveNumber);
+let decimalNumber = 42.5612;
+console.log('Entier négatif est de type : ' + typeof decimalNumber);
+```
+
+Exemple: boolean
+```js
+let userIsSignedIn = true;
+console.log('userIsSignedIn est de type : ' + typeof userIsSignedIn);
+let userIsAdmin = false;
+console.log('userIsAdmin est de type : ' + typeof userIsAdmin);
+```
+
+## Definissez des objets et leurs attributs avec des classes
+
+Les objets JavaScript sont ecrits en JSON (JavaScript Object Notation). Ce sont des series de paires cles/valeurs separees par des virgules, entre des accolades. Les objets peuvent etre enregistres dans une variable :
+
+```js
+let myBook = {
+    title: 'The Story of Tau',
+    author: 'Will Alexander',
+    numberOfPages: 250,
+    isAvailable: true
+}
+```
