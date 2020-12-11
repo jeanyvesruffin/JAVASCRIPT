@@ -17,7 +17,12 @@
     - [Les fonctions en utilisant les fat arrow (=>)](#les-fonctions-en-utilisant-les-fat-arrow-)
     - [Methode de classe](#methode-de-classe)
     - [Methode de classe statique](#methode-de-classe-statique)
-    - [Refactirisation de code](#refactirisation-de-code)
+    - [Refactorisation de code](#refactorisation-de-code)
+    - [Les tests](#les-tests)
+        - [Les tests unitaires](#les-tests-unitaires)
+        - [Les tests d'integrations](#les-tests-dintegrations)
+        - [Les tests fonctionnel](#les-tests-fonctionnel)
+    - [Fonction recursive](#fonction-recursive)
 
 <!-- /TOC -->
 
@@ -435,7 +440,7 @@ newAccount.showBalance();
 ## Methode de classe statique
 
 ```js
-const randomNumber = Math.random(); // crée un nombre aléatoire sur l'intervalle [0, 1]
+const randomNumber = Math.random(); // cree un nombre aleatoire sur l'intervalle [0, 1]
 const roundMeDown = Math.floor(495.966); // arrondit vers le bas à l'entier le plus proche, renvoie 495
 ```
 
@@ -457,9 +462,10 @@ BePolite.sayHelloTo("Will"); // imprime "Hello Will!""
 const sum = BePolite.add(2, 3); // sum = 5
 ```
 
-## Refactirisation de code
+## Refactorisation de code
 
-Avant:
+**code a refactoriser** Avant:
+
 ```js
 class Show {
     constructor(title, numberOfSeasons, episodesPerSeason) {
@@ -533,7 +539,7 @@ const updateShows = () => {
 
 updateShows();
 ```
-Apres:
+**code refactoriser**  Apres:
 ```js
 class Show {
     constructor(title, numberOfSeasons, episodesPerSeason) {
@@ -596,4 +602,105 @@ const updateShows = () => {
 
 updateShows();
 ```
+
+## Les tests
+
+### Les tests unitaires
+
+Voir sur [GRAFITART](https://www.grafikart.fr/tutoriels/premiers-tests-651)
+Voir sur [LAMBDATEST](https://www.lambdatest.com/blog/mocha-javascript-tutorial-with-examples-for-selenium-testing/)
+
+Exemple de code a tester :
+
+```js
+const getWordCount = (stringToTest) => {
+  const wordArray = stringToTest.split(' ');
+  return wordArray.length;
+}
+
+const getLetterCount = (stringToTest) => {
+  const wordArray = stringToTest.split(' ');
+  let totalLetters = 0;
+  for (let word of wordArray) {
+    word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    totalLetters += word.length;
+  }
+  return totalLetters;
+}
+```
+
+Code teste:
+
+```js
+const testSimpleWordCount = () => {
+    const testString = 'I have four words!';
+    if (getWordCount(testString) !== 4) {
+        console.error('Simple getWordCount failed!');
+    }
+}
+
+const testEdgeWordCount = () => {
+    const testString = '             ';
+    if (getWordCount(testString) !== 0) {
+        console.error('Edge getWordCount failed!');
+    }
+}
+
+const testSimpleLetterCount = () => {
+    const testString = 'I have twenty one letters!';
+    if (getLetterCount(testString) !== 21) {
+        console.error('Simple getLetterCount failed!');
+    }
+}
+
+const testEdgeLetterCount = () => {
+    const testString = '")(&;//!!';
+    if (getLetterCount(testString) !== 0) {
+        console.error('Edge getLetterCount failed!');
+    }
+}
+```
+Exemple a l'aide d'architecture de test (selenium, mocha et chai)
+
+```js
+describe('getWordCount()', function() {
+    it('should find four words', function() {
+        expect(getWordCount('I have four words!').to.equal(4));
+    });
+    it('should find no words', function() {
+        expect(getWordCount('      ').to.equal(0));
+    });
+});
+```
+
+### Les tests d'integrations
+### Les tests fonctionnel
+
+## Fonction recursive
+
+Une fonction recursive est une fonction qui s'appel elle meme.
+
+Exemple:
+
+```js
+const binarySearch = (array, thingToFind, start, end) => {
+    
+    if (start > end) {
+        return false;
+    }
+    
+    let mid = Math.floor((start + end) / 2);
+    
+    if (array[mid] === thingToFind) {
+        return true;
+    }
+    
+    if (thingToFind < array[mid]) {
+        return binarySearch(array, thingToFind, start, mid - 1);
+    } else {
+        return binarySearch(array, thingToFind, mid + 1, end);
+    }
+}
+```
+
 

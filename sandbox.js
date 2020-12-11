@@ -318,3 +318,76 @@ class BankAccount {
 }
 const newAccount = new BankAccount("Will Alexander", 500);
 newAccount.showBalance();
+
+console.log(`=============================== TP 8 : Les tests ================================`);
+console.log(`==== TP 8 : Les tests unitaire : taper ./node_modules/.bin/mocha dans un terminal bash a la raicne de votre projet pour executer les tests ====`);
+
+
+
+/*
+const getWordCount = (stringToTest) => {
+    const wordArray = stringToTest.split(' ');
+    return wordArray.length;
+}
+
+const getLetterCount = (stringToTest) => {
+    const wordArray = stringToTest.split(' ');
+    let totalLetters = 0;
+    for (let word of wordArray) {
+        word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+        totalLetters += word.length;
+    }
+    return totalLetters;
+}
+
+
+// test unitaire Mocha sidebar (plugin vscode)
+// describe == decris, it == cela ('resultat attendu'), expect == attendue
+describe('getWordCount()', function () {
+    it('Devrait trouver 4 mots', function () {
+        expect(getWordCount('J ai quatres mots!').to.equal(4));
+    });
+    it('Devrait ne pas trouver de mot', function () {
+        expect(getWordCount(' ').to.equal(0));
+    });
+})*/
+
+
+
+console.log(`=============================== TP 9 : Les tests ================================`);
+
+export class Book {
+    constructor(title, author, description,pages,currentPage,read) {
+      this.title = title;
+      this.author = author;
+      this.description = description;
+      this.pages = pages;
+      this.currentPage = currentPage;
+      this.read = read;
+    }
+  readBook(page){
+    console.log('page :' +page);
+    const pages = 3;
+    if(page<1 || page > pages){
+      return 0;
+    }else if(page>=1 && page <pages){
+      this.currentPage = page;
+      console.log('current page :'+this.currentPage);
+      return 1;
+    } else if(page == pages) {
+      this.currentPage = page;
+      this.read = true;
+      console.log('current page :' + this.currentPage );
+      console.log('read page :' + this.read );
+      return 1;
+    }
+  }
+  
+  
+  }
+  
+  let firstBook = new Book('book 1', 'author 1', 'description 1',3,1,false);
+  let secondBook = new Book('book 2', 'author 2', 'description 2',3,2,false);
+  let thirstBook = new Book('book 3', 'author 3', 'description 3',3,3,false);
+  export const books = [firstBook,secondBook,thirstBook];
+  
