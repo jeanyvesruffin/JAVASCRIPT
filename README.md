@@ -641,6 +641,8 @@ updateShows();
 
 Voir sur [GRAFITART](https://www.grafikart.fr/tutoriels/premiers-tests-651)
 Voir sur [LAMBDATEST](https://www.lambdatest.com/blog/mocha-javascript-tutorial-with-examples-for-selenium-testing/)
+Voir sur [jest](https://jestjs.io/)
+
 
 Exemple de code a tester :
 
