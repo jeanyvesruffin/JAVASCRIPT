@@ -334,7 +334,7 @@ foo.map((p)=>{return p.name.toUpperCase()})
 
 ```
 
-![filter_map]()
+![filter_map](filter_map.bmp)
 
 
 
