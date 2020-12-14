@@ -309,6 +309,38 @@ Plus d'information sur les Sets [Sets MDN](https://developer.mozilla.org/fr/docs
 
 Plus d'information sur les Maps [Maps MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map)
 
+Demo map et filter
+
+```js
+let foo = [
+{
+name : 'Bob',
+age : 16
+},
+{
+name : 'John',
+age : 33
+},
+{
+name : 'Harry',
+age : 42
+}
+]
+
+foo.filter(p => p.age >18).map((p)=>{return p.name.toUpperCase()})
+foo.filter(p => p.age >18).map((p)=>{ console.log('hello');return {name : p.name.toUpperCase(), age: p.age}})
+foo.map((p)=>{ console.log('hello');return {name : p.name.toUpperCase(), age: p.age}}).filter(p => p.age >18)
+foo.map((p)=>{return p.name.toUpperCase()})
+
+```
+
+![filter_map]()
+
+
+
+
+
+
 # Gerer la logique d'un programme en JavaScript
 
 ## Conditions : If, else et switch
